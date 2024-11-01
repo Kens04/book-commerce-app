@@ -1,11 +1,11 @@
 import prisma from "@/lib/prisma";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 // 購入履歴の保存
-export async function POST(request: NextRequest, response: NextResponse) {
+export async function POST(request: Request) {
   const { sessionId } = await request.json();
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
