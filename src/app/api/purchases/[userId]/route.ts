@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 // 購入履歴検索API
 export async function GET(
-  request: Request,
+  req: Request,
   { params }: { params: { userId: string } }
 ) {
   const userId = params.userId;
